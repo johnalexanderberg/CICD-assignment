@@ -33,7 +33,7 @@ jobs:
       uses: docker/build-push-action@v2.9.0
       with:
         push: true
-        tags: app:latest
+        tags: johnalexanderberg/app:latest
         
         # Run a single command using the runners shell
     - name: Run a one-line script
