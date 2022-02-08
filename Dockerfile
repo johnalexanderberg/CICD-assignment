@@ -13,7 +13,6 @@ RUN dotnet restore "aspnetdocker.csproj"
 COPY . .
 WORKDIR "/src/."
 RUN dotnet build "aspnetdocker.csproj" -c Release -o /app/build
-ENTRYPOINT ["dotnet", "run"]
 
 FROM build AS publish
 RUN dotnet publish "aspnetdocker.csproj" -c Release -o /app/publish /p:UseAppHost=false
