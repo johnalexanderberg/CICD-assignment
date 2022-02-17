@@ -36,17 +36,14 @@ jobs:
         tags: johnalexanderberg/app:latest
     - name: Install Open VPN
       run: sudo apt-get install openvpn
-    - name: Connect VPN
-      uses: golfzaptw/action-connect-ovpn@master
+     - name: Connect to VPN
       id: connect_vpn
+      uses: "kota65535/github-openvpn-connect-action@v1"
       with:
-        PING_URL: '20.91.197.15'
-        FILE_OVPN: '.github/vpn/config.ovpn'
-        SECRET: ${{ secrets.SECRET_USERNAME_PASSWORD }}
-      env:
-        CA_CRT: ${{ secrets.CA_CRT}}
-        USER_CRT: ${{ secrets.USER_CRT }}
-        USER_KEY: ${{ secrets.USER_KEY }}
+        config_file: ./.github/vpn/config.ovpn
+        username:  ${{ secrets.OPEN_VPN_USER}}
+        password: ${{ secrets.OPEN_VPN_PASSWORD }}
+        client_key: ${{ secrets.OPEN_VPN_KEY }}
     - name: Check Connect VPN
       run: echo ${{ steps.connect_vpn.outputs.STATUS }}
     - name: kill vpn
