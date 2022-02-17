@@ -34,8 +34,6 @@ jobs:
       with:
         push: true
         tags: johnalexanderberg/app:latest
-    - name: Sudo
-      run: sudo su
     - name: Install Open VPN
       run: |
         sudo apt update
