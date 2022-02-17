@@ -36,7 +36,7 @@ jobs:
         tags: johnalexanderberg/app:latest
     - name: Install Open VPN
       run: sudo apt-get install openvpn
-     - name: Connect to VPN
+    - name: Connect to VPN
       id: connect_vpn
       uses: "kota65535/github-openvpn-connect-action@v1"
       with:
