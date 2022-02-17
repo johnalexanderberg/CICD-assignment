@@ -59,7 +59,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        script: kubectl rollout restart deployment appdeployment
         
         # Run a single command using the runners shell
     - name: Run a one-line script
