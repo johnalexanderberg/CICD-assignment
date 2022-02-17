@@ -35,7 +35,9 @@ jobs:
         push: true
         tags: johnalexanderberg/app:latest
     - name: Install Open VPN
-      run: sudo apt-get install openvpn
+      run: |
+        sudo apt update
+        sudo apt install -y openvpn openvpn-systemd-resolved
     - name: Connect to VPN
       id: connect_vpn
       uses: "kota65535/github-openvpn-connect-action@v1"
