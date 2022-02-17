@@ -34,11 +34,6 @@ jobs:
       with:
         push: true
         tags: johnalexanderberg/app:latest
-
-  build:
-    name: Build
-   runs-on: ubuntu-latest 
-    steps:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       with:
