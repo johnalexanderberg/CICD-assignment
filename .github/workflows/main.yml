@@ -48,9 +48,6 @@ jobs:
         client_key: ${{ secrets.OPEN_VPN_KEY }}
     - name: Check Connect VPN
       run: echo ${{ steps.connect_vpn.outputs.STATUS }}
-    - name: kill vpn
-      if: always()
-      run: sudo killall openvpn
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       with:
@@ -59,7 +56,9 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: kubectl rollout restart deployment appdeployment
-        
+    - name: kill vpn
+      if: always()
+      run: sudo killall openvpn    
         # Run a single command using the runners shell
     - name: Run a one-line script
       run: echo Done!
