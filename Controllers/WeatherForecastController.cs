@@ -26,7 +26,11 @@ public class WeatherForecastController : ControllerBase
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateTime.Now.AddDays(index),
+<<<<<<< Updated upstream
             TemperatureC = Random.Shared.Next(-50, -45),
+=======
+            TemperatureC = Random.Shared.Next(-5, 5),
+>>>>>>> Stashed changes
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
