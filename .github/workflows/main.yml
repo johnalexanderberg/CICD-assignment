@@ -34,7 +34,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build Docker Image
-      run: docker build johnalexanderberg/app:$RELEASE_VERSION
+      run: docker build johnalexanderberg/app:$RELEASE_VERSION .
     - name: Push Docker Image
       run: docker push johnalexanderberg/app:$RELEASE_VERSION
     - name: Install Open VPN
