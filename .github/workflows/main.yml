@@ -21,7 +21,13 @@ jobs:
       run: dotnet build
     - name: Test
       run: dotnet test
-      
+
+    - name: Sätt versions-variabeln
+      run: echo "RELEASE_VERSION=$(echo ${GIT_MESSAGE} | grep -Po '(?<=--version=)[^;]+')" >> $GITHUB_ENV
+      env:
+        GIT_MESSAGE: ${{github.event.head_commit.message}}
+    - name: Test Release Variable
+      run: echo $RELEASE_VERSION
     - name: Login to Docker
       uses: docker/login-action@v1
       with:
@@ -31,7 +37,7 @@ jobs:
       uses: docker/build-push-action@v2.9.0
       with:
         push: true
-        tags: johnalexanderberg/app:latest
+        tags: johnalexanderberg/app:$RELEASE_VERSION
     - name: Install Open VPN
       run: |
         sudo apt update
