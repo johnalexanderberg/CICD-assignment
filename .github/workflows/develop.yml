@@ -2,9 +2,7 @@ name: .NET
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   build:
@@ -33,7 +31,7 @@ jobs:
       uses: docker/build-push-action@v2.9.0
       with:
         push: true
-        tags: johnalexanderberg/app:latest
+        tags: johnalexanderberg/appdevelop:latest
     - name: Install Open VPN
       run: |
         sudo apt update
@@ -48,10 +46,10 @@ jobs:
         client_key: ${{ secrets.OPEN_VPN_KEY }}
     - name: Check Connect VPN
       run: echo ${{ steps.connect_vpn.outputs.STATUS }}
-    - name: executing remote ssh commands using ssh key
+    - name: Executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
+        host: ${{ secrets.DEV_SERVER_HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
