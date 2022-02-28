@@ -46,10 +46,10 @@ jobs:
         client_key: ${{ secrets.OPEN_VPN_KEY }}
     - name: Check Connect VPN
       run: echo ${{ steps.connect_vpn.outputs.STATUS }}
-    - name: Executing remote ssh commands using ssh key
+    - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.DEV_SERVER_HOST }}
+        host: ${{ secrets.HOST_STAGE }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
