@@ -1,4 +1,4 @@
-name: .NET
+name: Stage Environment Workflow
 
 on:
   push:
