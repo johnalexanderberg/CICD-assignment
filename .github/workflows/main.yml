@@ -67,6 +67,5 @@ jobs:
     - name: kill vpn
       if: always()
       run: sudo killall openvpn    
-        # Run a single command using the runners shell
     - name: Run a one-line script
       run: echo Done!
