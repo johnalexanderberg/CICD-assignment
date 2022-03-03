@@ -35,8 +35,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build Docker Image
       run: docker build -t johnalexanderberg/app:$RELEASE_VERSION .
-    - name: Push Docker Image
+    - name: Push Docker Image 
       run: docker push johnalexanderberg/app:$RELEASE_VERSION
+    - name: Push Docker Image as Latest
+      run: docker push johnalexanderberg/app:latest
     - name: Install Open VPN
       run: |
         sudo apt update
